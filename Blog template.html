@@ -11,6 +11,7 @@
   </head>
   <body>
 
+    <!-- header biasanya untuk navigasi -->
     <b:section id='header' showaddelement="yes" >
       <b:widget id="HTML1" type='HTML' title="NavigasiBar" locked="yes">
         <b:includable id="main">
@@ -26,13 +27,13 @@
                 <a class="nav-link" href="#">Tutorial</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href="#">E-Book</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
+                <a class="nav-link" href="#">Blogging</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Privacy</a>
+                <a class="nav-link" href="#">Review</a>
               </li>
             </ul>
           </div>
@@ -45,7 +46,7 @@
             <div class="jumbotron">
               <div class="container">
                 <h1 class="display-1">Selamat Datang</h1>
-                <p><b>RamaKun</b> adalah tempat dimana kita bisa sharing dan disini juga bisa sebagai media informasi yang bermanfaat</p>
+                <p><b>RamaKun</b> adalah tempat dimana kita bisa sharing dan juga sebagai tempat media informasi yang bermanfaat</p>
               </div>
             </div>
           </b:if>
@@ -54,8 +55,93 @@
       </b:widget>
     </b:section>
 
-    <b:section id="Main" showaddelement="no">
-      <b:widget id='Blog1' locked='false' title='Posting Blog' type='Blog' version='1'/>
+    <div class="container">
+      <div class="row">
+        <!-- konten blog -->
+        <b:section id="Main" class="col-md-8" showaddelement="no" growth="horizontal">
+          <b:widget id='Blog1' locked='false' title='Posting Blog' type='Blog' version='1'/>
+        </b:section>
+
+        <!-- side bar -->
+        <b:section id='sidebar' class='sidebar col-md-4 m-2' showaddelement="yes" >
+          <b:widget id='PopularPosts1' locked='false' title='Popular Posts' type='PopularPosts'>
+            <b:widget-settings>
+              <b:widget-setting name='numItemsToShow'>5</b:widget-setting>
+              <b:widget-setting name='showThumbnails'>true</b:widget-setting>
+              <b:widget-setting name='showSnippets'>true</b:widget-setting>
+              <b:widget-setting name='timeRange'>LAST_YEAR</b:widget-setting>
+            </b:widget-settings>
+            <b:includable id='main'>
+              <b:if cond='data:title != &quot;&quot;'><h2 class="text-cennter"><data:title/></h2></b:if>
+              <div class='widget-content popular-posts'>
+                <ul>
+                  <b:loop values='data:posts' var='post'>
+                    <li>
+                      <b:if cond='!data:showThumbnails'>
+                        <b:if cond='!data:showSnippets'>
+                          <!-- (1) No snippet/thumbnail -->
+                          <a expr:href='data:post.href'><data:post.title/></a>
+                        <b:else/>
+                          <!-- (2) Show only snippets -->
+                          <div class='item-title'><a expr:href='data:post.href'><data:post.title/></a></div>
+                          <div class='item-snippet'><data:post.snippet/></div>
+                        </b:if>
+                        <b:else/>
+                        <!-- (3) Show only thumbnails or (4) Snippets and thumbnails. -->
+                        <div expr:class='data:showSnippets ? &quot;item-content&quot; : &quot;item-thumbnail-only&quot;'>
+                          <b:if cond='data:post.featuredImage.isResizable or data:post.thumbnail'>
+                            <div class='item-thumbnail'>
+                              <a expr:href='data:post.href' target='_blank'>
+                                <b:with value='data:post.featuredImage.isResizable                                  ? resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;) : data:post.thumbnail' var='image'>
+                                  <img alt='' border='0' expr:src='data:image'/>
+                                </b:with>
+                              </a>
+                            </div>
+                          </b:if>
+                          <div class='item-title'><a expr:href='data:post.href'><data:post.title/></a></div>
+                          <b:if cond='data:showSnippets'>
+                          <div class='item-snippet'><data:post.snippet/></div>
+                          </b:if>
+                        </div>
+                        <div style='clear: both;'/>
+                      </b:if>
+                    </li>
+                  </b:loop>
+                </ul>
+                <b:include name='quickedit'/>
+              </div>
+            </b:includable>
+          </b:widget>
+        </b:section>
+
+      </div>
+    </div>
+
+    <b:section id="Footer" showaddelement="yes">
+
+      <b:widget id="HTML2" type="HTML" title="Footer Pada Blog">
+      <b:includable id="main">
+      <div class="container-fluid bg-dark p-3">
+        <div class="row">
+          <div class="container col-md-12 text-center text-light">
+
+            <span class="ml-2 mr-2"><a href="#" class="badge badge-dark">Abaout</a></span>
+            <span class="ml-2 mr-2"><a href="#" class="badge badge-dark">Contact</a></span>
+            <span class="ml-2 mr-2"><a href="#" class="badge badge-dark">Privacy Policy</a></span>
+            <span class="ml-2 mr-2"><a href="#" class="badge badge-dark">Disclaimer</a></span>
+            <span class="ml-2 mr-2"><a href="/p/daftarisi.html" class="badge badge-dark">Daftar Isi</a></span>
+
+          </div>
+        </div>
+        <hr class="container bg-info" />
+        <div class="row">
+          <div class="container col-md-12 text-center text-light">
+            &#169; 2017 - 2018 Ramakun.com - All Rights Reserved
+          </div>
+        </div>
+      </div>
+      </b:includable>
+      </b:widget>
     </b:section>
 
 

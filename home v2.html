@@ -1,0 +1,21 @@
+<b:includable id='post' var='post'>
+  <div class="border p-0 m-3">
+    <b:if cond='data:blog.url != data:post.url'>
+      <a expr:href="data:post.url"><img expr:src='data:post.firstImageUrl' class="img-fluid m-0" alt="Responsive image"/></a>
+      <b:else/>
+      <!-- <img expr:src='data:post.firstImageUrl' class="img-fluid m-0" alt="Responsive image"/> -->
+    </b:if>
+    <div class="container">
+      <a class="text-uppercase font-weight-bold text-info mb-0" expr:href='data:post.url' style="text-decoration: none;"><h2><data:post.title/></h2></a>
+      <h5 class="text-muted"><data:post.timestamp /></h5>
+      <b:if cond='data:blog.url != data:post.url'>
+      <!-- Deskripsi SIngkat -->
+      <b:eval expr='snippet(data:post.body, {length: 450, links: false})' />
+
+      <b:else />
+      <data:post.body />
+      </b:if>
+    </div>
+
+  </div>
+</b:includable>

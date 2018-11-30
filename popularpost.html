@@ -1,0 +1,21 @@
+<b:if cond='data:title != &quot;&quot;'><h2 class="text-center bg-info mb-0 mt-3 p-1"><data:title/></h2></b:if>
+<div class="container border border-info mb-3">
+<b:loop values='data:posts' var='post'>
+  <div class="d-flex flex-row m-2">
+    <div class="">
+      <span class="align-middle">
+      <b:with value='data:post.featuredImage.isResizable ? resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;) : data:post.thumbnail' var='image'>
+      <img class="d-inline" expr:src='data:post.thumbnail' target='_blank'/>
+      </b:with>
+      </span>
+    </div>
+    <div class="">
+      <p><a expr:href='data:post.href' class=""><data:post.title/></a></p>
+    </div>
+
+      <!-- <p class="card-text"><data:post.snippet/></p> -->
+      <!-- <a expr:href='data:post.href'>Lihat</a> -->
+  </div>
+</b:loop>
+</div>
+<b:include name='quickedit'/>
