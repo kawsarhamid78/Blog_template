@@ -6,8 +6,36 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
     <!-- END Bootstrap -->
     <meta charset="utf-8" />
-    <title><data:blog.title/></title>
+
+    <!-- google web master -->
+    <meta name="google-site-verification" content="cJ0zzITLYs_ka5cu1FY4jdMUv91PURp41KzQ2XztItE" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-101641861-3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-101641861-3');
+    </script>
+
+    <!-- facebook debug -->
+    <meta property="og:url" content="http://www.nytimes.com/2015/02/19/arts/international/when-great-minds-dont-think-alike.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" expr:content="data:title" />
+    <meta property="og:description" expr:content="data:description" />
+    <meta property="og:image" content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" />
+
+    <b:if cond='data:blog.pageType == &quot;index&quot;'>
+    <title><data:blog.title/> </title>
+    <b:else/>
+      <title><data:post.pageName/></title>
+    </b:if>
     <b:skin />
+
+    <!-- bagian highligdht -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css"/>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
   </head>
   <body>
 
