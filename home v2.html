@@ -1,31 +1,68 @@
 <b:includable id='post' var='post'>
-  <div class="border p-0 m-4">
+  <div class='border row p-0 m-4'>
     <!-- jika url tidak sama dengan postingan url -->
     <b:if cond='data:blog.url != data:post.url'>
-      <div class="row d-flex">
-        <div class="d-flex col-md-5 justify-content-center align-self-center">
-          <a expr:href="data:post.url"><img expr:src='resizeImage(data:post.firstImageUrl, 250, &quot;4:3&quot;)' class="img-thumbnail border-0 p-2 m-0" alt="Responsive image"/></a>
+      <div class='row d-flex'>
+          <div class='d-flex col-md-5 justify-content-center align-self-center'>
+          <a expr:href='data:post.url'><img expr:alt='data:blog.postTitle' class='img-thumbnail border-0 p-2 m-0' expr:src='resizeImage(data:post.firstImageUrl, 250, &quot;4:3&quot;)'/></a>
         </div>
-        <div class="col-md-7 card-body">
-          <h5 class="card-title text-center"><a expr:href='data:post.url' style="text-decoration: none;"><data:post.title/></a></h5>
-          <h6 class="card-subtitle mb-2 text-muted"><data:post.timestamp /></h6>
-          <p class="card-text"><b:eval expr='snippet(data:post.body, {length: 150, links: false})' /></p>
+        <div class='col-md-7 card-body'>
+          <h5 class='card-title text-center'><a expr:href='data:post.url' style='text-decoration: none;'><data:post.title/></a></h5>
+          <h6 class='card-subtitle mb-2 text-muted'><data:post.timestamp/></h6>
+          <p class='card-text'><b:eval expr='snippet(data:post.body, {length: 150, links: false})'/></p>
         </div>
 
       </div>
       <b:else/>
       <!-- <img expr:src='data:post.firstImageUrl' class="img-fluid m-0" alt="Responsive image"/> -->
     </b:if>
-    <div class="flex container col-lg-10">
-      <b:if cond="data:blog.url != data:post.url">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-format="fluid"
+       data-ad-layout-key="-fy-2o+ek-66-uq"
+       data-ad-client="ca-pub-5893252812241709"
+       data-ad-slot="5453430096"></ins>
+    <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <div class='flex container'>
+      <b:if cond='data:blog.url != data:post.url'>
 
       </b:if>
       <b:if cond='data:blog.url != data:post.url'>
       <!-- Deskripsi SIngkat -->
-      <b:else />
-      <a class="text-uppercase font-weight-bold text-info mb-0"><h2><data:post.title/></h2></a>
-      <h5 class="text-muted"><data:post.timestamp /></h5>
-      <data:post.body />
+      <b:else/>
+      <div class='postingan-full'>
+        <h1 class='text-info text-center mb-0 h3'><data:post.title/></h1>
+        <span class='text-muted h3 mb-3 h5'><data:post.timestamp/></span>
+        <div class='container postingan-body' expr:id='&quot;post2&quot; + data:post.id'>
+          <div expr:id='&quot;post1&quot; + data:post.id'/>
+          <div class='googlepublisherads' style='margin:20px 0'>
+            <center>
+              <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+              <ins class="adsbygoogle"
+                   style="display:block; text-align:center;"
+                   data-ad-layout="in-article"
+                   data-ad-format="fluid"
+                   data-ad-client="ca-pub-5893252812241709"
+                   data-ad-slot="8042513539"></ins>
+              <script>
+                   (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </center>
+          </div>
+          <data:post.body/>
+          <script type='text/javascript'>
+            var obj0=document.getElementById(&quot;post1<data:post.id/>&quot;);
+            var obj1=document.getElementById(&quot;post2<data:post.id/>&quot;);
+            var s=obj1.innerHTML;
+            var t=s.substr(0,s.length/2);
+            var r=t.lastIndexOf(&quot;&lt;br&gt;&quot;);
+            if(r&gt;0) {obj0.innerHTML=s.substr(0,r);obj1.innerHTML=s.substr(r+4);}
+          </script>
+        </div>
+      </div>
       </b:if>
     </div>
 

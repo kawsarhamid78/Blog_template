@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="id" dir="ltr">
   <head>
+    <b:if cond='data:blog.homepageUrl == data:blog.url'>
+     <meta name="description" content="Belajar Adsense dan SEO untuk mendapatkan uang dari google, penghasilan capai 3 juta lebih" />
+    </b:if>
+    <b:if cond='data:blog.pageType == &quot;item&quot;'>
+     <meta expr:content='data:blog.metaDescription' name='description'/>
+    </b:if>
+    <b:if cond='data:blog.homepageUrl == data:blog.url'>
+     <meta name="keywords" content="Belajar Blog, SEO, Adsense ,membuat template blog dan belajar teknologi lainnya" />
+    </b:if>
+    <b:if cond='data:blog.pageType == &quot;item&quot;'>
+     <meta expr:content='data:blog.pageName' name='keywords'/>
+    </b:if>
     <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
     <!-- Bootstrap -->
     <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' rel='stylesheet'/>
     <!-- END Bootstrap -->
     <meta charset='utf-8'/>
-    <b:if cond='data:blog.pageType == &quot;index&quot;'>
 
   	<!-- google web master -->
     <meta content='cJ0zzITLYs_ka5cu1FY4jdMUv91PURp41KzQ2XztItE' name='google-site-verification'/>
@@ -30,24 +41,27 @@
     </script>
 
   	<!-- facebook debug -->
+    <b:if cond='data:blog.homepageUrl == data:blog.url'>
+     <meta property='og:description' content="Belajar Adsense dan SEO untuk mendapatkan uang dari google, penghasilan capai 3 juta lebih" />
+    </b:if>
+    <b:if cond='data:blog.pageType == &quot;item&quot;'>
+     <meta expr:content='data:blog.metaDescription' property='og:description'/>
+    </b:if>
     <meta expr:content='data:blog.url' property='og:url'/>
     <meta content='article' property='og:type'/>
     <meta expr:content='data:blog.title' property='og:title'/>
-    <b:if cond='data:blog.postDescription != &quot;&quot;'>
-    <meta expr:content='data:blog.postDescription' property='og:description'/>
-    <b:else/>
-    <meta content='RamaKun adalah tempat dimana kita bisa sharing dan juga sebagai tempat media informasi yang bermanfaat' property='og:description'/>
-    </b:if>
     <b:if cond='data:blog.postImageThumbnailUrl'>
-    <meta expr:content='data:blog.postThumbnailUrl' property='og:image'/>
+      <meta expr:content='data:blog.postThumbnailUrl' property='og:image'/>
     <b:else/>
-    <meta content='https://raw.githubusercontent.com/rama4zis/Blog_template/master/image/LogoRamaKun.png' property='og:image'/>
-    <meta expr:content='data:blog.blogspotFaviconUrl' property='og:image'/>
+      <meta content='https://raw.githubusercontent.com/rama4zis/Blog_template/master/image/LogoRamaKun.png' property='og:image'/>
+      <meta expr:content='data:blog.blogspotFaviconUrl' property='og:image'/>
     </b:if>
     <meta content='https://www.facebook.com/rama4zis' property='article:author'/>
-      <title><data:blog.metaDescription/></title>
-    <b:else/>
-      <title><data:blog.pageName/></title>
+
+    <b:if cond='data:blog.homepageUrl == data:blog.url'>
+      <title><data:blog.title/></title>
+    <b:else />
+      <title><data:blog.pageName /> - <data:blog.title /></title>
     </b:if>
     <b:skin />
 
@@ -69,17 +83,17 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="#">Tutorial</a>
+              <li class='nav-item'>
+                <a class='nav-link' href='/search/label/Tutorial'>Tutorial</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">E-Book</a>
+              <li class='nav-item'>
+                <a class='nav-link' href='/p/dokumen-e-book.html'>E-Book</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Blogging</a>
+              <li class='nav-item'>
+                <a class='nav-link' href='/search/label/Blog'>Blog</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Review</a>
+              <li class='nav-item'>
+                <a class='nav-link' href='/search/label/Review'>Review</a>
               </li>
             </ul>
           </div>
@@ -89,17 +103,33 @@
           <b:if cond='data:blog.url == data:blog.homepageUrl'>
 
             <!-- Jumbotron pada homepage -->
-            <div class="jumbotron">
-              <div class="container">
-                <h1 class="display-1">Selamat Datang</h1>
-                <div class="row">
-                  <img class="img-Responsive" src="https://raw.githubusercontent.com/rama4zis/Blog_template/master/image/LogoRamaKun.png" alt="" style="width: 30%" />
-                  <p class="align-self-end">adalah tempat dimana kita bisa sharing dan juga sebagai tempat media informasi yang bermanfaat</p>
+            <div class='jumbotron'>
+              <div class='container'>
+                <div class='row text-center d-block'>
+                  <img alt='RamaKun Logo' class='img-fluid' src='https://raw.githubusercontent.com/rama4zis/Blog_template/master/image/LogoRamaKun.png' style='width: 30%'/>
+                  <p class='align-self-end'>adalah tempat dimana kita bisa sharing dan juga sebagai tempat media informasi yang bermanfaat</p>
                 </div>
               </div>
             </div>
           </b:if>
 
+        </b:includable>
+      </b:widget>
+      <b:widget id="HTML3" type='HTML' title="AdsenseBaner" locked="yes">
+        <b:includable id="main">
+          <div class="container-fluid">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- Iklan Banner -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5893252812241709"
+                 data-ad-slot="7682463023"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
         </b:includable>
       </b:widget>
     </b:section>

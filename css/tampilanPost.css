@@ -1,0 +1,26 @@
+.postingan-body > a > img{
+  margin: 20px 0px ;
+}
+
+
+
+
+/* Tampilan HP */
+@media only screen and (max-width: 988px) {
+  .border {
+        border-style: none !important;
+  }
+  .post-outer > .m-4 {
+/*     margin: 0px !important; */
+  }
+  .post-outer > .row > .container {
+    margin: 0px;
+    padding: 10px;
+    min-width: 100% !important;
+  }
+  .postingan-full > .container {
+    min-width: 100%;
+    padding: 0px;
+    margin: 0px
+  }
+}
